@@ -1,19 +1,26 @@
-angular.module("LifeCareApp").controller("ContactController", function ($scope, ServiceRequestFactory) {
+angular.module("LifeCareApp").controller("ContactController", function ($scope, $timeout, ServiceRequestFactory) {
 
-    $scope.services = ["Blood test", "Physiotherapy Service", "Nursing Attendent Care", "Child Care Service",
+    $scope.services = ["Physiotherapy Service", "Nursing Attendent Care", "Child Care Service",
     "Old Age Care Service", "ICU Care"];
 
     $scope.cities = ["Chandigarh", "Mohali"];
 
     $scope.request = {};
 
+    $scope.message = {
+        showSuccessMessage : false,
+        showErrorMessage : false
+    };
+
     $scope.createRequest = function () {
         $scope.request.requestId = generateRequestId();
-        //$scope.request.date = new Date();
         console.log($scope.request);
         ServiceRequestFactory.createServiceRequest($scope.request).then(function(response){
             console.log("Service request created successfully. ");
-            $scope.succesMessage = "Congratulations, Service request created successfully.";
+            $scope.message.showSuccessMessage = true;
+            $timeout(function() {
+                $scope.message.showSuccessMessage = false;
+            }, 10000);
             ServiceRequestFactory.sendEmail(response.data).then(function () {
                 console.log("Emails sent successfully. ");
             }, function () {
@@ -21,7 +28,10 @@ angular.module("LifeCareApp").controller("ContactController", function ($scope, 
             });
         }, function () {
             console.log("Error occured while creating service request ");
-            $scope.errorMessage = "Something went wrong!!! Please try again.";
+            $scope.message.showErrorMessage = true;
+            $timeout(function() {
+                $scope.message.showErrorMessage = false;
+            }, 10000);
         });
         $scope.request = {};
     }
