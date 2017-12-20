@@ -23,15 +23,34 @@
     <script src="js/directive/FileUploadDirective.js"></script>
 </head>
 
-<body ng-controller="MainController">
-<i class="fa fa-user-md" style="font-size:36px;"></i>
+<body>
 <div class="container">
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="nav nav-tabs">
         <div class="row">
             <div class="navbar-header col-sm-2">
                 <img src="images/lcah_logo.jpeg"; style="margin-left: 40px">
             </div>
-            <div class="collapse navbar-collapse navbar-left col-sm-10" id="myNavbar1" style="margin-top: 20px">
+            <div class="col-sm-6">
+                <ul class="nav nav-pills" style="padding-top: 50px">
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+                    <li><i class="material-icons" style="font-size:48px">call</i></li>
+                    <li><h5 style="color: blue">+91-9096322203</h5><h5 style="color: blue">+91-79872321663</h5></li>
+                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+                    <li><i class="material-icons" style="font-size:48px; ">email</i></li>
+                    <li><h5 style="color: blue">lcah.connect@gmail.com</h5></li>
+                </ul>
+            </div>
+            <div class="col-sm-4 ">
+                <ul class="nav nav-pills" style="padding-top: 50px">
+                    <a href="https://www.facebook.com/LCAH2017/"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+                    <a href="https://twitter.com/"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
+                    <a href="https://plus.google.com/"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
+                    <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container col-sm-12" id="myNavbar1" style="margin-top: 20px; padding-left: 50px">
                 <ul class="nav nav-pills">
                     <li class="active"><a data-toggle="pill" href="#">Home</a></li>
                     <li><a data-toggle="pill" href="#contact-us">Contact-Us</a></li>
@@ -49,17 +68,11 @@
                     <li><a data-toggle="pill" href="#work-with-us">Work With Us</a></li>
                     <li><a data-toggle="pill" href="#feedback">Feedback</a></li>
                     <li><a data-toggle="pill" href="#about-us">About LCAH</a></li>
-                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
-                    <li><i class="material-icons" style="font-size:48px">call</i></li>
-                    <li><h5 style="color: blue">+91-9096322203</h5><h5 style="color: blue">+91-79872321663</h5></li>
-                    <li><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
-                    <li><i class="material-icons" style="font-size:48px; ">email</i></li>
-                    <li><h5 style="color: blue">lcah.connect@gmail.com</h5></li>
                 </ul>
             </div>
-
         </div>
     </nav>
+</div>
 </div>
 
 <div class="container" ng-view></div>
@@ -75,7 +88,7 @@
                 <p>Hospital like care at your home.
                 </p>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
+                    <a href="https://www.facebook.com/LCAH2017/"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
                     <a href="https://twitter.com/"><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>
                     <a href="https://plus.google.com/"><i id="social-gp" class="fa fa-google-plus-square fa-3x social"></i></a>
                     <a href="mailto:bootsnipp@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-3x social"></i></a>

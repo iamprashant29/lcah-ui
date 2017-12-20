@@ -1,6 +1,11 @@
-angular.module("LifeCareApp").controller("JobApplicationController", function ($scope, JobApplicationFactory) {
+angular.module("LifeCareApp").controller("JobApplicationController", function ($scope, $timeout, JobApplicationFactory) {
 
     $scope.jobApplication = {};
+
+    $scope.message = {
+        showSuccessMessage : false,
+        showErrorMessage : false
+    };
 
     $scope.submitApplication = function () {
         var formdata = new FormData();
@@ -13,9 +18,17 @@ angular.module("LifeCareApp").controller("JobApplicationController", function ($
                 console.log("Candidate details saved successfully successfully");
             }, function () {
                 console.log("Error while saving candidate details.");
+                $scope.message.showErrorMessage = true;
+                $timeout(function() {
+                    $scope.message.showErrorMessage = false;
+                }, 10000);
             });
             $scope.jobApplication = {};
         }, function () {
+            $scope.message.showErrorMessage = true;
+            $timeout(function() {
+                $scope.message.showErrorMessage = false;
+            }, 10000);
             console.log("Error while uploading resume.");
         });
         $scope.file = {};

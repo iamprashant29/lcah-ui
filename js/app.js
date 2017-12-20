@@ -1,7 +1,4 @@
 var app = angular.module("LifeCareApp", ["ngRoute"]);
-app.controller("MainController", function ($scope) {
-    $scope.hello="helllo";
-});
 
 app.config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider) {

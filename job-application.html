@@ -1,4 +1,4 @@
-<div class="container-fluid" style="margin-top: 100px">
+<div class="container-fluid" style="margin-top: 10px">
     <div class="row">
         <div class="img">
             <img src="images/careers.png" class="img-rounded" alt="Work With Us" style="width: 100%">
@@ -8,6 +8,17 @@
     <h2>Submit you Application</h2>
     <hr style="border-top: solid; border-color: #337ab7">
     <div class="row">
+        <div class="row">
+            <div class="alert alert-success" role="alert" ng-show="message.showSuccessMessage">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Success!</strong> Thanks for choosing Life Care At Home. We will contact you in case your resume gets shortlisted.
+            </div>
+
+            <div class="alert alert-danger" role="alert" ng-show="message.showErrorMessage">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Something went wrong! </strong>Please try again.
+            </div>
+
         <div class="col-sm-8">
             <form class="form-horizontal">
                 <div class="form-group">
