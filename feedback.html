@@ -20,34 +20,69 @@
             </div>
 
         <div class="col-sm-8">
-            <form class="form-horizontal">
+            <form name="feedbackForm" class="form-horizontal" novalidate>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="firstName">First Name</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" ng-model="feedback.firstName" id="firstName" placeholder="First Name">
+                        <input type="text" class="form-control" name="firstName" ng-model="feedback.firstName" ng-pattern="/^[a-zA-Z]*$/" id="firstName" placeholder="First Name" required>
+                        <span ng-show="feedbackForm.firstName.$dirty && feedbackForm.firstName.$error.required">
+                            <div class="alert alert-danger">
+                                First name cannot be blank
+                            </div>
+                        </span>
+                        <span ng-show="feedbackForm.firstName.$dirty && feedbackForm.firstName.$error.pattern">
+                            <div class="alert alert-danger">
+                                Only alphabets from A to Z are allowed
+                            </div>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="lastName">Last Name</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" ng-model="feedback.lastName" id="lastName" placeholder="Last Name">
+                        <input type="text" class="form-control" name="lastName" ng-model="feedback.lastName" ng-pattern="/^[a-zA-Z]*$/" id="lastName" placeholder="Last Name" required>
+                        <span ng-show="feedbackForm.lastName.$dirty && feedbackForm.lastName.$error.required">
+                            <div class="alert alert-danger">
+                                Last name cannot be blank
+                            </div>
+                        </span>
+                        <span ng-show="feedbackForm.lastName.$dirty && feedbackForm.lastName.$error.pattern">
+                            <div class="alert alert-danger">
+                                Only alphabets from A to Z are allowed
+                            </div>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="emailId">Email Id</label>
                     <div class="col-sm-8">
-                        <input type="email" class="form-control" ng-model="feedback.emailId" id="emailId" placeholder="Enter your Email Id">
+                        <input type="email" class="form-control" name="emailId" ng-model="feedback.emailId" id="emailId" placeholder="Enter your Email Id" required>
+                        <span ng-show="feedbackForm.emailId.$dirty && feedbackForm.emailId.$error.required">
+                            <div class="alert alert-danger">
+                                Email Id cannot be blank
+                            </div>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="comment">Comment</label>
                     <div class="col-sm-8">
-                        <textarea class="form-control" rows="5" ng-model="feedback.comment" id="comment" placeholder="Leave a comment"></textarea>
+                        <textarea class="form-control" rows="5" name="comment" ng-model="feedback.comment" ng-pattern="/^[a-zA-Z]*$/" id="comment" placeholder="Leave a comment" required></textarea>
+                        <span ng-show="feedbackForm.comment.$dirty && feedbackForm.comment.$error.required">
+                            <div class="alert alert-danger">
+                                Comment cannot be blank
+                            </div>
+                        </span>
+                        <span ng-show="feedbackForm.comment.$dirty && feedbackForm.comment.$error.pattern">
+                            <div class="alert alert-danger">
+                                Only alphabets from A to Z are allowed
+                            </div>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" ng-click="sendFeedback()" class="btn btn-primary btn-lg">Submit Feedback</button>
+                        <button type="submit" ng-disabled="feedbackForm.$invalid" ng-click="sendFeedback()" class="btn btn-primary btn-lg">Submit Feedback</button>
                     </div>
                 </div>
             </form>
