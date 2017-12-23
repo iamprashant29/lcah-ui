@@ -12,6 +12,9 @@ angular.module("LifeCareApp").controller("ContactController", function ($scope, 
         showErrorMessage : false
     };
 
+    $scope.isAgeValid = true;
+    $scope.isLeadingZero = false;
+
     $scope.createRequest = function () {
         $scope.request.requestId = generateRequestId();
         console.log($scope.request);
@@ -35,6 +38,20 @@ angular.module("LifeCareApp").controller("ContactController", function ($scope, 
         });
         $scope.request = {};
     }
+
+    $scope.validateAge = function(){
+        if($scope.request.patientAge.toString().charAt(0) === '0'){
+            $scope.isLeadingZero = true;
+        }else{
+            $scope.isLeadingZero = false;
+        }
+
+        if($scope.request.patientAge >= 1 && $scope.request.patientAge <= 120){
+            $scope.isAgeValid = true;
+        }else{
+            $scope.isAgeValid = false;
+        }
+    };
 
     function generateRequestId(){
        return "LCAH"+Math.floor(100000 + Math.random() * 999999)

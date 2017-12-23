@@ -137,3 +137,11 @@ i {
     transition:all .25s;
 }
 
+.panel-heading {
+    font-size: 20px;
+}
+
+.panel-body {
+    font-size: 15px;
+}
+
