@@ -20,75 +20,151 @@
         </div>
 
         <div class="col-sm-8">
-            <form class="form-horizontal">
+            <form class="form-horizontal" name="requestForm" novalidate>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="contactPerson">Your Name</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" ng-model="request.contactPersonName" id="contactPerson" placeholder="Contact Person Name">
+                        <input type="text" class="form-control" name="contactPersonName" ng-model="request.contactPersonName" ng-pattern="/^[a-zA-Z ]*$/" id="contactPerson" placeholder="Contact Person Name" required>
+                        <span ng-show="requestForm.contactPersonName.$dirty && requestForm.contactPersonName.$error.required">
+                            <div class="alert alert-danger">
+                                First name cannot be blank
+                            </div>
+                        </span>
+                        <span ng-show="requestForm.contactPersonName.$dirty && requestForm.contactPersonName.$error.pattern">
+                            <div class="alert alert-danger">
+                                Only alphabets from A to Z are allowed
+                            </div>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="service">Select Service</label>
                     <div class="col-sm-8">
-                        <select class="selectpicker form-control" ng-model="request.serviceRequested" id="service">
+                        <select class="selectpicker form-control" name="service" ng-model="request.serviceRequested" id="service" required>
                             <option value="" selected disabled>Select Service</option>
                             <option ng-repeat="service in services">{{service}}</option>
                         </select>
+                        <span ng-show="requestForm.service.$touched && requestForm.service.$error.required">
+                            <div class="alert alert-danger">
+                                Atleast one service should be selected
+                            </div>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="emailId">Email Id</label>
                     <div class="col-sm-8">
-                        <input type="email" class="form-control" ng-model="request.emailId" id="emailId" placeholder="Enter your Email Id">
+                        <input type="email" class="form-control" name="emailId" ng-model="request.emailId" id="emailId" placeholder="Enter your Email Id" required>
+                        <span ng-show="requestForm.emailId.$dirty && requestForm.emailId.$error.required">
+                            <div class="alert alert-danger">
+                                Email Id cannot be blank
+                            </div>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="contactNumber">Contact No.</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" ng-model="request.contactNumber" id="contactNumber" placeholder="Enter your Contact No.">
+                        <input type="text" class="form-control" name="contactNo" ng-model="request.contactNumber" ng-pattern="/^[0-9]*$/" ng-minlength="10" ng-maxlength="10" id="contactNumber" placeholder="Enter your Contact No." required>
+                        <span ng-show="requestForm.contactNo.$dirty && requestForm.contactNo.$error.required">
+                            <div class="alert alert-danger">
+                                Contact number cannot be blank
+                            </div>
+                        </span>
+                        <span ng-show="requestForm.contactNo.$dirty && requestForm.contactNo.$error.pattern">
+                            <div class="alert alert-danger">
+                                Only digits from 0 to 9 are allowed
+                            </div>
+                        </span>
+                        <span ng-show="requestForm.contactNo.$dirty && (requestForm.contactNo.$error.minlength || requestForm.contactNo.$error.maxlength)">
+                            <div class="alert alert-danger">
+                                Invalid contact number. Should be 10 digits long.
+                            </div>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="city">City</label>
                     <div class="col-sm-8">
-                        <select class="selectpicker form-control" ng-model="request.city" id="city">
+                        <select class="selectpicker form-control" name="city" ng-model="request.city" id="city" required>
                             <option value="" selected disabled>Select City</option>
                             <option ng-repeat="city in cities">{{city}}</option>
                         </select>
+                        <span ng-show="requestForm.city.$touched && requestForm.city.$error.required">
+                            <div class="alert alert-danger">
+                                Atleast one city should be selected
+                            </div>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="address">Address</label>
                     <div class="col-sm-8">
-                        <textarea class="form-control" rows="5" ng-model="request.address" id="address" placeholder="Your Address"></textarea>
+                        <textarea class="form-control" rows="5" name="address" ng-model="request.address" id="address" placeholder="Your Address" required></textarea>
+                        <span ng-show="requestForm.address.$dirty && requestForm.address.$error.required">
+                            <div class="alert alert-danger">
+                                Address cannot be blank
+                            </div>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="patientName">Patient Name</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" ng-model="request.patientName" id="patientName" placeholder="Patient Name">
+                        <input type="text" class="form-control" name="patientName" ng-model="request.patientName" ng-pattern="/^[a-zA-Z ]*$/" id="patientName" placeholder="Patient Name" required>
+                        <span ng-show="requestForm.patientName.$dirty && requestForm.patientName.$error.required">
+                            <div class="alert alert-danger">
+                                First name cannot be blank
+                            </div>
+                        </span>
+                        <span ng-show="requestForm.patientName.$dirty && requestForm.patientName.$error.pattern">
+                            <div class="alert alert-danger">
+                                Only alphabets from A to Z are allowed
+                            </div>
+                        </span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2">Patient Gender</label>
                     <div class="col-sm-8">
                         <label class="radio-inline">
-                            <input type="radio" name="gender" ng-model="request.patientGender" value="Male">Male
+                            <input type="radio" name="gender" name="patientGender" ng-model="request.patientGender" value="Male" required>Male
                         </label>
                         <label class="radio-inline">
-                            <input type="radio" name="gender" ng-model="request.patientGender" value="Female">Female
+                            <input type="radio" name="gender" name="patientGender" ng-model="request.patientGender" value="Female" required>Female
                         </label>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="patientAge">Patient Age</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" ng-model="request.patientAge" id="patientAge" placeholder="Patient Age">
+                        <input type="text" class="form-control" name="patientAge" ng-model="request.patientAge" ng-change="validateAge()" ng-pattern="/^[0-9]*$/" id="patientAge" placeholder="Patient Age" required>
+                        <span ng-show="requestForm.patientAge.$dirty && requestForm.patientAge.$error.required">
+                            <div class="alert alert-danger">
+                                Patient's age cannot be blank
+                            </div>
+                        </span>
+                        <span ng-show="requestForm.patientAge.$dirty && requestForm.patientAge.$error.pattern">
+                            <div class="alert alert-danger">
+                                Only digits from 0 to 9 are allowed
+                            </div>
+                        </span>
+                        <span ng-show="requestForm.patientAge.$dirty && !isAgeValid">
+                            <div class="alert alert-danger">
+                                Age should be between 1 and 120
+                            </div>
+                        </span>
+                        <span ng-show="requestForm.patientAge.$dirty && isLeadingZero">
+                            <div class="alert alert-danger">
+                                Invalid input. Please remove leading zero
+                            </div>
+                        </span>
+
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" ng-click="createRequest()" class="btn btn-primary btn-lg">Submit Request</button>
+                        <button type="submit" ng-disabled="requestForm.$invalid" ng-click="createRequest()" class="btn btn-primary btn-lg">Submit Request</button>
                     </div>
                 </div>
             </form>
